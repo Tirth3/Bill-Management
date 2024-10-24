@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Elec Manage</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container">
+
+
+    <table class="table table-dark table-striped my-3">
+        {% if allbills|length == 0 %}
+        <div class="alert alert-primary my-5">NO BILLS PENDING. Add new bills here <a class="button text-success"
+                href="/add">Add Bills</a> </div>
+        {% else %}
+        <tr>
+            <th>Sno.</th>
+            <th>Bill No.</th>
+            <th>Issue Date</th>
+            <th>Last Date</th>
+            <th>Amount</th>
+            <th>Payment Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for bill in allbills %}
+        <tr>
+            <th>{{loop.index}}</th>
+            <th>{{bill.BillID}}</th>
+            <th>{{bill.IssueDate}}</th>
+            <th>{{bill.LastDate}}</th>
+            <th>{{bill.Amount}}</th>
+            <th>{{bill.Status}}</th>
+            <th><a href="/Delete/{{bill.BillID}}" type="button" class="btn btn-outline-danger">DELETE</a>
+                <a href="/Update/{{bill.BillID}}" type="button" class="btn btn-outline-info">UPDATE</a>
+            {% if bill.Status == "paid"%}
+            {% else %}
+            <a href="https://payments.google.com/gp/w/home/signup" type="button" class="btn btn-outline-success">PAY</a>
+            {% endif %}
+            </th>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+    <a href="/add" type="button" class="btn btn-outline-danger">ADD NEW BILLS</a>
+</div>
+{% endblock body %}

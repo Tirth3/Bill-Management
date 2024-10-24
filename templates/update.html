@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Elec Update</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+    <h2>Bill ID : {{bill.BillID}}</h2>
+    <form class="my-5" action="/Update/{{bill.BillID}}" method="POST">
+    <div class="mb-3">
+        <label for="billno" class="form-label">Bill No.</label>
+        <input type="text" value="{{bill.BillID}}" class="form-control disabled" name="billno" id="billno">
+    </div>
+    <div class="mb-3">
+        <label for="idate" class="form-label">Issue Date</label>
+        <input type="date" value="{{bill.IssueDate}}" class="form-control" name="idate" id="idate">
+    </div>
+    <div class="mb-3">
+        <label for="ldate" class="form-label">Last Date</label>
+        <input type="date" value="{{bill.LastDate}}" class="form-control" name="ldate" id="ldate" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="amt" class="form-label">Amount</label>
+        <input type="text" value="{{bill.Amount}}" class="form-control" name="amt" id="amt" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="Status" class="form-label">Status</label>
+        <input type="text" value="{{bill.Status}}" class="form-control" name="status" id="Status" placeholder="">
+    </div>
+    <button type="submit" class="btn btn-success">UPDATE</button>
+    </form>
+</div>
+
+{% endblock body %}

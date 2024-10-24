@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Elec Manage</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+    <form action="/add" method="POST">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Bill No.</label>
+        <input type="text" class="form-control" name="billno" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Issue Date</label>
+        <input type="date" class="form-control" name="idate" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Last Date</label>
+        <input type="date" class="form-control" name="ldate" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Amount</label>
+        <input type="text" class="form-control" name="amt" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Status</label>
+        <input type="text" class="form-control" name="status" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <button type="submit" class="btn btn-primary">ADD</button>
+    </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Elec Dashboard</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container">
+  <!-- <form class="d-flex my-4" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <a  class="btn btn-outline-success" name="billno" type="submit">Search</button>
+  </form> -->
+
+  <div class="container row my-3">
+    <div class="card col" style="width: 18rem;">
+      <img src="{{ url_for('static' , filename='Screenshot (12).png') }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">The total assets under supervision under JP Morgan is $2.2 trillion more than GDP of India.</p>
+      </div>
+    </div>
+    <div class="card col" style="width: 18rem;">
+      <img src="{{ url_for('static' , filename='Screenshot (3).png') }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">Over 40% of U.S. dollars in circulation are actually held outside of the United States, making it one of the most internationally recognized and used currencies in the world.</p>
+      </div>
+    </div>
+    <div class="card col" style="width: 18rem;">
+      <img src="{{ url_for('static' , filename='Screenshot (4).png') }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">The first official stock exchange was established in Amsterdam in 1602 by the Dutch East India Company, making stock trading a centuries-old practice!</p>
+      </div>
+    </div>
+    <div class="card col" style="width: 18rem;">
+      <img src="{{ url_for('static' , filename='Screenshot (5).png') }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">The world’s first credit card was introduced by Diners Club in 1950. It wasn’t meant for shopping, but rather for restaurant payments! Now, there are over 2 billion credit cards in use worldwide.</p>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  <table class="table table-dark table-striped my-3">
+    {% if allbills|length == 0 %}
+    <div class="alert alert-primary my-5">NO BILLS PENDING. Add new bills here <a class="button text-success" href="/add">Add Bills</a> </div>
+    {% else %}
+      <tr>
+        <th>Sno.</th>
+        <th>Bill No.</th>
+        <th>Issue Date</th>
+        <th>Last Date</th>
+        <th>Amount</th>
+        <th>Payment Status</th>
+      </tr>
+    {% for bill in allbills %}
+    <tr>
+      <th>{{loop.index}}</th>
+      <th>{{bill.BillID}}</th>
+      <th>{{bill.IssueDate}}</th>
+      <th>{{bill.LastDate}}</th>
+      <th>{{bill.Amount}}</th>
+      <th>{{bill.Status}}</th>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table>
+  <a href="/add" type="button" class="btn btn-outline-danger">ADD NEW BILLS</a>
+</div>
+{% endblock body %}
